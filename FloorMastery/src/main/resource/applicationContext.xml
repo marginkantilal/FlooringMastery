@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+                http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<bean id="io" class="com.fm.view.UserIOConsoleImpl" />
+<bean id="view" class="com.fm.view.FlooringMasteryView">
+        <constructor-arg ref="io" />
+    </bean>
+   
+   
+   
+ <bean id="dao" class="com.fm.dao.OrderDaoImpl"/>
+  
+ 
+    <bean id="service" class="com.fm.service.OrderServiceImpl">
+                <constructor-arg ref="dao" />
+        
+        
+    </bean>
+    
+    <bean id="controller" class="com.fm.controller.FlooringMasteryController">
+        <constructor-arg ref="service" />
+        <constructor-arg ref="view" />
+    </bean>
+</beans>
